@@ -35,7 +35,7 @@
     <div id="todoPanel" class="panel">
         <h3 class="panel-header">
             To Do List
-					<!--interesting way to get the number of certain elements in obj-->
+					<!--interesting way to get the number of certain elements in obj -->
             <span class="label label-info">
                 {{(todos | filter: {complete: false}).length}}
             </span>
@@ -81,4 +81,12 @@
         </div>
     </div>
 </body>
+<div>
+	<div>
+		<strong>angular.isUndefined;</strong> useful instead of =='undefined' || ==null
+	</div>
+	<div>
+		<strong>{\{(todos | filter: {complete: false}).length}}</strong> !--interesting way to get the number of certain elements in obj --
+	</div>
+</div>
 </html>
