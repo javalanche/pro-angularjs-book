@@ -37,6 +37,7 @@
     <div id="todoPanel" class="panel">
 
         <div class="row well">
+					<!--use key value pairing in object in case you want access to both, key for assigning and value for display-->
             <div class="col-xs-6" ng-repeat="(key,val) in settings">
                 <h4>{{key}}</h4>
                 <div class="radio" ng-repeat="button in buttonNames">
@@ -92,8 +93,10 @@
                 <td>{{$index + 1}}</td>
                 <td>{{item.action}}</td>
                 <td>
-                    <span ng-hide="item.complete">(Incomplete)</span>
-                    <span ng-show="item.complete">(Done)</span>
+										<span ng-hide="item.complete">(Incomplete)</span>
+										<span ng-show="item.complete">(Done)</span>
+									<!--this didn't work-->
+										<!--<span ng-bind-template="{ item.complete ? '(Incomplete)' : '' }"></span>-->
                 </td>
             </tr>
         </table>

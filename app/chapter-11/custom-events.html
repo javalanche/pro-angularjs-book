@@ -15,6 +15,7 @@
         angular.module('exampleApp', [])
             .controller('defaultCtrl', function($scope) {
                 $scope.message = 'Tap me!';
+								$scope.javier = 'javier';
             })
             .directive('tap', function() {
                 return function(scope, el, attrs) {
@@ -27,9 +28,12 @@
 </head>
 <body ng-controller="defaultCtrl">
     <div id="todoPanel" class="panel">
-        <div class="well" tap="message = 'Tapped!'">
+        <div class="well" tap="message = 'Tapped!'; javier='fraga'">
             {{message}}
         </div>
+				<div>
+					{{javier}}
+				</div>
     </div>
 </body>
 </html>

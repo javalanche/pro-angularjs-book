@@ -22,8 +22,16 @@
             <div class="well">
                 <div class="form-group">
                     <label>Select an Action:</label>
-                    <select ng-model="selectValue"
-                            ng-options="item.id as item.action group by item.place for item in todos">
+                    <select ng-model="selectValue" ng-options="item.id as item.action group by item.place for item in todos">
+                        <option value="">(Pick One)</option>
+                    </select>
+                    <select ng-model="selectValue" ng-options="item.action group by item.place for item in todos">
+                        <option value="">(Pick One)</option>
+                    </select>
+                    <select ng-model="selectValue" ng-options="item.id as item.action for item in todos">
+                        <option value="">(Pick One)</option>
+                    </select>
+                    <select ng-model="selectValue" ng-options="item.action for item in todos">
                         <option value="">(Pick One)</option>
                     </select>
                 </div>

@@ -11,7 +11,6 @@
         form .ng-valid.ng-dirty {
             background-color: lightgreen;
         }
-
         span.summary.ng-invalid {
             color: red;
             font-weight: bold;
@@ -19,7 +18,6 @@
         span.summary.ng-valid {
             color: green;
         }
-
         div.error {
             color: red;
             font-weight: bold;
@@ -90,6 +88,17 @@
             </div>
         </div>
     </form>
+		<div>myForm.userName.$pristine: {{myForm.userName.$pristine}}</div>
+		<div>myForm.userName.$dirty: {{myForm.userName.$dirty}}</div>
+		<div>myForm.userName.$valid: {{myForm.userName.$valid}}</div>
+		<div>myForm.userName.$invalid: {{myForm.userName.$invalid}}</div>
+		<div>myForm.userName.$error: {{myForm.userName.$error}}</div>
+		<hr>
+		<div>myForm.userEmail.$pristine: {{myForm.userEmail.$pristine}}</div>
+		<div>myForm.userEmail.$dirty: {{myForm.userEmail.$dirty}}</div>
+		<div>myForm.userEmail.$valid: {{myForm.userEmail.$valid}}</div>
+		<div>myForm.userEmail.$invalid: {{myForm.userEmail.$invalid}}</div>
+		<div>myForm.userEmail.$error: {{myForm.userEmail.$error}}</div>
 </div>
 </body>
 </html>
