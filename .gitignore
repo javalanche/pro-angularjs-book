@@ -5,4 +5,8 @@ bower_components/
 tmp
 .DS_Store
 .idea
-.git
+.git.*~
+*~
+.*.sw[a-z]
+*.sw[a-z]
+*.original
