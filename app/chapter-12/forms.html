@@ -80,6 +80,22 @@
             </div>
         </div>
     </div>
+
+		<h1> Using Checkboxes </h1>
+		<h2> Listing 12-13 </h2>
+		<h3> ng-true-value & ng-false-value </h3>
+		<div class="well">
+			<div class="checkbox">
+				<label>
+					<input name="sample" type="checkbox" ng-model="inputValue" ng-true-value="Hurrah!" ng-false-value="Boo!">
+					This is a checkbox
+				</label>
+			</div>
+		</div>
+		<div class="well">
+			<p>Model Value is set using ng-true-value and ng-false-value in checkbox above: {{inputValue}}</p>
+		</div>
+
 </body>
 <div>
 	<h2>NOTES:</h2>
