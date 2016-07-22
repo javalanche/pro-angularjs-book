@@ -32,78 +32,78 @@
     </script>
 </head>
 <body ng-controller="defaultCtrl">
-    <div id="todoPanel" class="panel">
-        <h3 class="panel-header">
-            To Do List
-					<!--interesting way to get the number of certain elements in obj -->
-            <span class="label label-info">
-                {{(todos | filter: {complete: false}).length}}
-            </span>
-        </h3>
+	<div id="todoPanel" class="panel">
+		<h3 class="panel-header">
+			To Do List
+			<!--interesting way to get the number of certain elements in obj -->
+			<span class="label label-info">
+				{{(todos | filter: {complete: false}).length}}
+			</span>
+		</h3>
 
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="well">
-                    <div class="form-group row">
-                        <label for="actionText">Action:</label>
-                        <input type="text" id="actionText" class="form-control"
-                               ng-model="newTodo.action"/>
-                    </div>
-                    <div class="form-group row">
-                        <label for="actionLocation">Location:</label>
-                        <select class="form-control" id="actionLocation"
-                                ng-model="newTodo.location">
-                            <option>Home</option>
-                            <option>Office</option>
-                            <option>Mall</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-primary btn-block"
-                            ng-click="addNewItem(newTodo)">
-                        Add
-                    </button>
-                </div>
-            </div>
-            <div class="col-xs-8">
-                <table class="table">
-                    <thead>
-                    <tr><th>#</th><th>Action</th><th>Done</th></tr>
-                    </thead>
-                    <tr ng-repeat="item in todos">
-                        <td>{{$index + 1}}</td>
-                        <td>{{item.action}}</td>
-                        <td>
-                            <input type="checkbox" ng-model="item.complete"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-
-		<h1> Using Checkboxes </h1>
-		<h2> Listing 12-13 </h2>
-		<h3> ng-true-value & ng-false-value: just replaces true and false boolean with any string of choice </h3>
-		<div class="well">
-			<div class="checkbox">
-				<label>
-					<input name="sample" type="checkbox" ng-model="inputValue" ng-true-value="Hurrah!" ng-false-value="Boo!">
-					This is a checkbox and replaces boolean true and false with string set by ng-true-value and ng-false-value
-				</label>
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="well">
+					<div class="form-group row">
+						<label for="actionText">Action:</label>
+						<input type="text" id="actionText" class="form-control"
+																				 ng-model="newTodo.action"/>
+					</div>
+					<div class="form-group row">
+						<label for="actionLocation">Location:</label>
+						<select class="form-control" id="actionLocation"
+																	 ng-model="newTodo.location">
+							<option>Home</option>
+							<option>Office</option>
+							<option>Mall</option>
+						</select>
+					</div>
+					<button class="btn btn-primary btn-block"
+						 ng-click="addNewItem(newTodo)">
+						Add
+					</button>
+				</div>
+			</div>
+			<div class="col-xs-8">
+				<table class="table">
+					<thead>
+						<tr><th>#</th><th>Action</th><th>Done</th></tr>
+					</thead>
+					<tr ng-repeat="item in todos">
+						<td>{{$index + 1}}</td>
+						<td>{{item.action}}</td>
+						<td>
+							<input type="checkbox" ng-model="item.complete"/>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
-		<div class="well">
-			<p>Model Value is set using ng-true-value and ng-false-value in checkbox above: {{inputValue}}</p>
-		</div>
-
-</body>
-<div>
+	</div>
+	<!--
+		 -NOTES 
+		 -->
 	<h2>NOTES:</h2>
-	<div>
-		<strong>angular.isUndefined;</strong> useful instead of =='undefined' || ==null
-	</div>
-	<div>
+	<strong>angular.isUndefined;</strong> useful instead of =='undefined' || ==null
+	<p>
 		<strong>{\{(todos | filter: {complete: false}).length}}</strong> !--interesting way to get the number of certain elements in obj with property in object --
+	</p>
+	<!--
+		 -CHECKBOXES 
+		 -->
+	<h1> Using Checkboxes </h1>
+	<h2> Listing 12-13 </h2>
+	<h3> ng-true-value & ng-false-value: just replaces true and false boolean with any string of choice </h3>
+	<div class="well">
+		<div class="checkbox">
+			<label>
+				<input name="sample" type="checkbox" ng-model="inputValue" ng-true-value="Hurrah!" ng-false-value="Boo!">
+				This is a checkbox and replaces boolean true and false with string set by ng-true-value and ng-false-value
+			</label>
+		</div>
 	</div>
-</div>
+	<div class="well">
+		<p>Model Value is set using ng-true-value and ng-false-value in checkbox above: {{inputValue}}</p>
+	</div>
+</body>
 </html>
