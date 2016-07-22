@@ -8,6 +8,7 @@
     <script src="/bower_components/angular/angular.min.js"></script>
     <script>
         angular.module('exampleApp', [])
+
             .controller('defaultCtrl', function($scope) {
                 $scope.todos = [
                     { action: "Get groceries", complete: false },
@@ -28,6 +29,8 @@
                         complete: false
                     });
                 };
+							$scope.requireValue = true;
+							$scope.matchPattern = new RegExp("^[a-z]"); // cannot begin with lower case letters
             });
     </script>
 </head>
@@ -81,16 +84,16 @@
 		</div>
 	</div>
 	<!--
-		 -NOTES 
-		 -->
+	 -NOTES 
+	-->
 	<h2>NOTES:</h2>
 	<strong>angular.isUndefined;</strong> useful instead of =='undefined' || ==null
 	<p>
-		<strong>{\{(todos | filter: {complete: false}).length}}</strong> !--interesting way to get the number of certain elements in obj with property in object --
+	<strong>{\{(todos | filter: {complete: false}).length}}</strong> !--interesting way to get the number of certain elements in obj with property in object --
 	</p>
 	<!--
-		 -CHECKBOXES 
-		 -->
+	 -CHECKBOXES 
+	-->
 	<h1> Using Checkboxes </h1>
 	<h2> Listing 12-13 </h2>
 	<h3> ng-true-value & ng-false-value: just replaces true and false boolean with any string of choice </h3>
@@ -105,5 +108,25 @@
 	<div class="well">
 		<p>Model Value is set using ng-true-value and ng-false-value in checkbox above: {{inputValue}}</p>
 	</div>
+	<!--
+	 -TEXTAREA 
+	-->
+	<form name="myForm" novalidate>
+		<div class="well">
+			<div class="form-group">
+				<textarea name="sample" cols="40" rows="3" ng-model="textValue" ng-required="requireValue" ng-minlength="3" 
+					ng-maxlength="10" 
+					ng-pattern="matchPattern">
+				</textarea>
+			</div>
+		</div>
+		<div class="well">
+			<p>Required Error: {{myForm.sample.$error.required}}</p>
+			<p>Min Length Error: {{myForm.sample.$error.minlength}}</p>
+			<p>Max Length Error: {{myForm.sample.$error.maxlength}}</p>
+			<p>Pattern Error: {{myForm.sample.$error.pattern}}</p>
+			<p>Element Valid: {{myForm.sample.$valid}}</p>
+		</div>
+	</form>
 </body>
 </html>
