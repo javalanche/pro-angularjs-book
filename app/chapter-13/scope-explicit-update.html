@@ -12,6 +12,7 @@
     <script>
         $(document).ready(function() {
             $('#jqui button').button().click(function(e) {
+								// book does not explain this cause it is jqueryUI syntax
                 angular.element(angularRegion).scope().$apply('handleClick()'); // don't understand angularRegion part
             });
         });
