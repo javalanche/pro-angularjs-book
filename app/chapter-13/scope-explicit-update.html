@@ -12,7 +12,7 @@
     <script>
         $(document).ready(function() {
             $('#jqui button').button().click(function(e) {
-                angular.element(angularRegion).scope().$apply('handleClick()');
+                angular.element(angularRegion).scope().$apply('handleClick()'); // don't understand angularRegion part
             });
         });
 
@@ -34,18 +34,19 @@
     </script>
 </head>
 <body>
+	<h3>using angular with jquery and jQueryUI</h3>
     <div id="angularRegion" class="well" ng-controller="simpleCtrl">
         <h4>AngularJS</h4>
         <div class="checkbox">
             <label>
-                <input type="checkbox" ng-model="buttonEnabled" /> Enable Button
+                <input type="checkbox" ng-model="buttonEnabled" /> Enable Button: $watch var here triggers jQuery button function to disable button
             </label>
         </div>
         Click counter: {{clickCounter}}
     </div>
     <div id="jqui" class="well">
         <h4>jQuery UI</h4>
-        <button>Click me!</button>
+        <button>Click me!: document.ready binds angular function click counter to here, which is cool never seen that done before</button>
     </div>
 </body>
 </html>
