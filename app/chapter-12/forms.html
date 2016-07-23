@@ -124,11 +124,23 @@
 			</div>
 		</div>
 		<div class="well">
-			<p>Required Error: {{myForm.sample.$error.required}}</p>
-			<p>Min Length Error: {{myForm.sample.$error.minlength}}</p>
-			<p>Max Length Error: {{myForm.sample.$error.maxlength}}</p>
-			<p>Pattern Error: {{myForm.sample.$error.pattern}}</p>
-			<p>Element Valid: {{myForm.sample.$valid}}</p>
+			<p>myForm.sample.$error.required
+				<span style="color:red">(needs ng-required)</span>
+				: {{myForm.sample.$error.required}}
+			</p>
+			<p>myForm.sample.$error.minlength
+				<span style="color:red">(3)</span>
+				: {{myForm.sample.$error.minlength}}
+			</p>
+			<p>myForm.sample.$error.maxlength
+				<span style="color:red">(10)</span>
+				: {{myForm.sample.$error.maxlength}}
+			</p>
+			<p>myForm.sample.$error.pattern
+				<span style="color:red">(cannot start with lower case letter, customized with new RegExp();)</span>
+				: {{myForm.sample.$error.pattern}}
+			</p>
+			<p>myForm.sample.$valid: {{myForm.sample.$valid}}</p>
 		</div>
 	</form>
 </body>
