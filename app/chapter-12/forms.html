@@ -11,11 +11,11 @@
 
             .controller('defaultCtrl', function($scope) {
                 $scope.todos = [
-                    { action: "Get groceries", complete: false },
-                    { action: "Call plumber", complete: false },
-                    { action: "Buy running shoes", complete: true },
-                    { action: "Buy flowers", complete: false },
-                    { action: "Call family", complete: false }
+                    { action: "Get groceries", complete: false, id:100, place:'store' },
+                    { action: "Call plumber", complete: false, id:200, place:'home' },
+                    { action: "Buy running shoes", complete: true, id:300, place:'store' },
+                    { action: "Buy flowers", complete: false, id:400, place:'store' },
+                    { action: "Call family", complete: false, id:500, place:'home' }
                 ];
 
                 $scope.addNewItem = function(newItem) {
@@ -33,6 +33,14 @@
 							$scope.matchPattern = new RegExp("^[a-z]"); // cannot begin with lower case letters
             });
     </script>
+		<style type="text/css" media="screen">
+			.redline{
+				border: 1px solid red !important;
+			}
+			.redline-deep *{
+				border: 1px solid red !important;
+			}	
+		</style>
 </head>
 <body ng-controller="defaultCtrl">
 	<div id="todoPanel" class="panel">
@@ -118,29 +126,79 @@
 		<div class="well">
 			<div class="form-group">
 				<textarea name="sample" cols="40" rows="3" ng-model="textValue" ng-required="requireValue" ng-minlength="3" 
-					ng-maxlength="10" 
-					ng-pattern="matchPattern">
+																																															 ng-maxlength="10" 
+																								ng-pattern="matchPattern">
 				</textarea>
 			</div>
 		</div>
 		<div class="well">
 			<p>myForm.sample.$error.required
-				<span style="color:red">(needs ng-required)</span>
-				: {{myForm.sample.$error.required}}
+			<span style="color:red">(needs ng-required)</span>
+			: {{myForm.sample.$error.required}}
 			</p>
 			<p>myForm.sample.$error.minlength
-				<span style="color:red">(3)</span>
-				: {{myForm.sample.$error.minlength}}
+			<span style="color:red">(3)</span>
+			: {{myForm.sample.$error.minlength}}
 			</p>
 			<p>myForm.sample.$error.maxlength
-				<span style="color:red">(10)</span>
-				: {{myForm.sample.$error.maxlength}}
+			<span style="color:red">(10)</span>
+			: {{myForm.sample.$error.maxlength}}
 			</p>
 			<p>myForm.sample.$error.pattern
-				<span style="color:red">(cannot start with lower case letter, customized with new RegExp();)</span>
-				: {{myForm.sample.$error.pattern}}
+			<span style="color:red">(cannot start with lower case letter, customized with new RegExp();)</span>
+			: {{myForm.sample.$error.pattern}}
 			</p>
 			<p>myForm.sample.$valid: {{myForm.sample.$valid}}</p>
+		</div>
+		<!--
+		-SELECT ELEMENTS 
+		-->
+		<h1> Using Select Elements </h1>
+		<h2> Listing 12-15 </h2>
+		<h3> ng-options="LABEL for VARIABLE in ARRAY"</h3>
+		<h3> ng-options="SELECTED PROPERTY as LABEL for VARIABLE in ARRAY"</h3>
+		<div class="well">
+			<div class="form-group">
+				<label>Select an Action:</label>
+				<select ng-model="selectValue" ng-options="item.action for item in todos">
+				</select>
+				gives value="?" selected="selected" label="", which is blank first option in dropdown list
+			</div>
+			<div class="form-group">
+				<label>Select an Action:</label>
+				<select ng-model="selectValueB" ng-options="item.action for item in todos">
+					<option value="">(Pick One)</option>
+				</select>
+				replaces first blank option in dropdown list
+			</div>
+			<div class="form-group">
+				<label>Select an Action:</label>
+				<select ng-model="selectValueC" ng-options="item.id as item.action for item in todos">
+					<option value="">(Javier is the best)</option>
+				</select>
+				 ng-options="SELECTED PROPERTY as LABEL for VARIABLE in ARRAY", id in obj property
+			</div>
+			<div class="form-group">
+				<label>Select an Action:</label>
+				<select ng-model="selectValueD" ng-options="item.action group by item.place for item in todos">
+					<option value="">(Fraga is the best)</option>
+				</select>
+				 ng-options="item.action group by item.place for item in todos"
+			</div>
+			<div class="form-group">
+				<label>Select an Action:</label>
+				<select ng-model="selectValueE" ng-options="item.id as item.action group by item.place for item in todos ">
+					<option value="">(Mine is the best)</option>
+				</select>
+				 ng-options="item.id as item.action group by item.place for item in todos "
+			</div>
+		</div>
+		<div class="well">
+			<p>Selected: {{selectValue || 'None'}}</p>
+			<p>Selected: {{selectValueB || 'None'}}</p>
+			<p>Selected id in obj property: {{selectValueC || 'None'}}</p>
+			<p>Selected id in obj property: {{selectValueD || 'None'}}</p>
+			<p>Selected id in obj property: {{selectValueE || 'None'}}</p>
 		</div>
 	</form>
 </body>
