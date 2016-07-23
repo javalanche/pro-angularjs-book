@@ -9,15 +9,13 @@
     <script src="controllers-inheritance.js"></script>
 </head>
 <body ng-controller="topLevelCtrl">
-
+	<h3>Controllers within controllers</h3>
     <div class="well">
         <h4>Top Level Controller</h4>
         <div class="input-group">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button"
-                        ng-click="reverseText()">Reverse</button>
-                <button class="btn btn-default" type="button"
-                        ng-click="changeCase()">Change Case</button>
+                <button class="btn btn-default" type="button" ng-click="reverseText()">Reverse character order</button>
+                <button class="btn btn-default" type="button" ng-click="changeCase()">Change Case: odd lower case, even upper case</button>
             </span>
             <input class="form-control" ng-model="data.dataValue" />
         </div>
@@ -27,25 +25,20 @@
         <h4>First Child Controller</h4>
         <div class="input-group">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button"
-                        ng-click="reverseText()">Reverse</button>
-                <button class="btn btn-default" type="button"
-                        ng-click="changeCase()">Change Case</button>
+                <button class="btn btn-default" type="button" ng-click="reverseText()">Reverse: from parent controller</button>
+                <button class="btn btn-default" type="button" ng-click="changeCase()">Change Case: new function in next controller</button>
             </span>
             <input class="form-control" ng-model="data.dataValue" />
         </div>
     </div>
-
+ 
     <div class="well" ng-controller="secondChildCtrl">
         <h4>Second Child Controller</h4>
         <div class="input-group">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button"
-                        ng-click="reverseText()">Reverse</button>
-                <button class="btn btn-default" type="button"
-                        ng-click="changeCase()">Change Case</button>
-                <button class="btn btn-default" type="button"
-                        ng-click="shiftFour()">Shift</button>
+                <button class="btn btn-default" type="button" ng-click="reverseText()">Reverse: from parent.parent controller</button>
+                <button class="btn btn-default" type="button" ng-click="changeCase()">Change Case: new function in last controller</button>
+                <button class="btn btn-default" type="button" ng-click="shiftFour()">Shift: capitalize first four characters leave other alone</button>
             </span>
             <input class="form-control" ng-model="data.dataValue" />
         </div>
