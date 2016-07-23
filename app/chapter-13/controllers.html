@@ -24,9 +24,11 @@
     </script>
 </head>
 <body ng-controller="defaultCtrl">
+		<h3> ng-options="LABEL for VARIABLE in ARRAY"</h3>
     <div class="well">
         <label>Select a City:</label>
         <select ng-options="city for city in cities" ng-model="city"></select>
+				ng-options="city for city in cities"
     </div>
 
     <div class="well">
