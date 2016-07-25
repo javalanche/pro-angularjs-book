@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <script src="/bower_components/angular/angular.min.js"></script>
+<script>
+	var app = angular.module("exampleApp", []);
+	 
+	app.controller("firstController", function ($scope) {
+
+		$scope.dataValue = "Hello, Adam";
+
+		$scope.reverseText = function () {
+			$scope.dataValue = $scope.dataValue.split("").reverse().join("");
+		}
+	});
+
+	app.controller("secondController", function ($scope) {
+
+		$scope.dataValue = "Hello, Jacqui";
+
+		$scope.changeCase = function () {
+			$scope.dataValue = $scope.dataValue.toUpperCase();
+		};
+	});
+</script>
+</head>
+<body>
+	<h3>does not use dot rule thus has own vars from ng-model not shared with other controllers</h3>
+	<div class="well" ng-controller="firstController">
+		<h4>First Controller</h4>
+		<div class="input-group">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="reverseText()">Reverse</button>
+			</span>
+			<input class="form-control" ng-model="dataValue">
+		</div>
+	</div>
+
+	<div class="well" ng-controller="secondController">
+		<h4>Second Controller</h4>
+		<div class="input-group">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="changeCase()">
+					Case
+				</button>
+			</span>
+			<input class="form-control" ng-model="dataValue">
+		</div>
+	</div>
+</body>
+</html>
+
