@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
     <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="angular-locale_fr-fr.js"></script>
+    <!--<script src="angular-locale_fr-fr.js"></script>-->
     <script>
         angular.module('exampleApp', [])
             .controller('defaultCtrl', function ($scope) {
@@ -60,10 +60,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="p in products | take:2:limitVal | orderBy:'price'">
-                        <td>{{p.name | labelCase}}</td>
-                        <td>{{p.category | labelCase:true}}</td>
-                        <td>{{getExpiryDate(p.expiry) | date:'shortDate'}}</td>
+                    <tr ng-repeat="p in products | take:2:5">
+                        <td>{{p.name}}</td>
+                        <td>{{p.category}}</td>
+                        <td>{{p.expiry}}</td>
                         <td class="text-right">{{p.price | currency}}</td>
                     </tr>
                 </tbody>
