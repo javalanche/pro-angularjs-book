@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <!--<script src="angular-locale_fr-fr.js"></script>-->
+    <script>
+        angular.module('exampleApp', [])
+            .controller('defaultCtrl', function ($scope) {
+                $scope.products = [
+                    { name: "Apples", category: "Fruit", price: 1.20, expiry: 10 },
+                    { name: "Bananas", category: "Fruit", price: 2.42, expiry: 7 },
+                    { name: "Pears", category: "Fruit", price: 2.02, expiry: 6 },
+
+                    { name: "Tuna", category: "Fish", price: 20.45, expiry: 3 },
+                    { name: "Salmon", category: "Fish", price: 17.93, expiry: 2 },
+                    { name: "Trout", category: "Fish", price: 12.93, expiry: 4 },
+
+                    { name: "Beer", category: "Drinks", price: 2.99, expiry: 365 },
+                    { name: "Wine", category: "Drinks", price: 8.99, expiry: 365 },
+                    { name: "Whiskey", category: "Drinks", price: 45.99, expiry: 365 }
+                ];
+
+                $scope.limitVal = "5";
+                $scope.limitRange = [];
+                for(var i = -$scope.products.length; i <= $scope.products.length; i++) {
+                    $scope.limitRange.push(i.toString());
+                }
+
+                $scope.getExpiryDate = function(days) {
+                    var now = new Date();
+                    return now.setDate(now.getDate() + days);
+                };
+            });
+    </script>
+    <script src="customFilters.js"></script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>
+                Products
+                <span class="label label-primary">{{products.length}}</span>
+            </h3>
+        </div>
+        <div class="panel-body">
+            Limit: <select ng-model="limitVal" ng-options="item for item in limitRange"></select>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Category</td>
+                        <td>Expiry</td>
+                        <td class="text-right">Price</td>
+                    </tr>
+                </thead>
+								<tbody>
+									<tr ng-repeat="p in products | orderBy:[myCustomSorter, '-price'] | limitTo: 5">
+										<td>{{p.name | labelCase }}</td>
+										<td>{{p.category | labelCase:true }}</td>
+										<td>{{p.expiry}}</td>
+										<td class="text-right">{{p.price | currency }}</td>
+									</tr>
+								</tbody>
+            </table>
+        </div>
+    </div>
+		<h3>uses the labelCase directive</h3>
+		<textarea name="desc" rows="20" cols="90">
+...
+<tr ng-repeat="p in products | orderBy:[myCustomSorter, '-price'] | limitTo: 5">
+<td>\{\{p.name | labelCase }}</td>
+<td>\{\{p.category | labelCase:true }}</td>
+<td>\{\{p.expiry}}</td>
+<td class="text-right">\{\{p.price | currency }}</td>
+</tr>
+...
+ 
+I have not specified a configuration option when applying the filter to the name property, which means that
+AngularJS will pass null as the value for the second argument to the filter worker function. I have written the filter so
+that a false or null value for the second value means that the default behavior is used, and I recommend you take the
+same approach for your custom filters because it makes them easier to use. I have specified the configuration option
+true when applying the filter to the category property, which will invert the case transformation applied by the filter.
+You can see the effect of both filters in Figure 14-16.
+		</textarea>
+		<textarea name="desc2" rows="10" cols="92">
+■■Tip 
+Notice that I used the angular.isString method to check that the value my filter is formatting is really a string.
+Although I differentiated between using single-value and collection filters in this chapter, there is no real difference when
+writing either kind of filter, and it is always worth checking that you have received the kind of data you are expecting,
+which can happen when your filter is misapplied in a directive expression. For this filter, I simply return the data value
+unmodified if it isn’t a string, but you may prefer to generate an error that will be detected during testing.
+		</textarea>
+</body>
+</html>
