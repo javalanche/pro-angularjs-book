@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <!--<script src="angular-locale_fr-fr.js"></script>-->
+    <script>
+        angular.module('exampleApp', [])
+            .controller('defaultCtrl', function ($scope) {
+                $scope.products = [
+                    { name: "Apples", category: "Fruit", price: 1.20, expiry: 10 },
+                    { name: "Bananas", category: "Fruit", price: 2.42, expiry: 7 },
+                    { name: "Pears", category: "Fruit", price: 2.02, expiry: 6 },
+
+                    { name: "Tuna", category: "Fish", price: 20.45, expiry: 3 },
+                    { name: "Salmon", category: "Fish", price: 17.93, expiry: 2 },
+                    { name: "Trout", category: "Fish", price: 12.93, expiry: 4 },
+
+                    { name: "Beer", category: "Drinks", price: 2.99, expiry: 365 },
+                    { name: "Wine", category: "Drinks", price: 8.99, expiry: 365 },
+                    { name: "Whiskey", category: "Drinks", price: 45.99, expiry: 365 }
+                ];
+
+                $scope.limitVal = "5";
+                $scope.limitRange = [];
+                for(var i = -$scope.products.length; i <= $scope.products.length; i++) {
+                    $scope.limitRange.push(i.toString());
+                }
+
+                $scope.getExpiryDate = function(days) {
+                    var now = new Date();
+                    return now.setDate(now.getDate() + days);
+                };
+            });
+    </script>
+    <script src="customFilters.js"></script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>
+                Products
+                <span class="label label-primary">{{products.length}}</span>
+            </h3>
+        </div>
+        <div class="panel-body">
+            Limit: <select ng-model="limitVal" ng-options="item for item in limitRange"></select>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Category</td>
+                        <td>d M</td>
+                        <td>dd/MM/yy</td>
+                        <td>dd MMM yy</td>
+                        <td>dd MMMM yyyy</td>
+                        <td>EEEE</td>
+                        <td>EEE</td>
+                        <td>HH H hh h</td>
+                        <td>mm m ss s</td>
+                        <td>a Z</td>
+                        <td class="text-right">Price</td>
+                        <td class="text-right">Price</td>
+                    </tr>
+                </thead>
+								<tbody>
+									<tr ng-repeat="p in products">
+										<td>{{p.name | uppercase }}</td>
+										<td>{{p.category | lowercase }}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"d M"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"dd/MM/yy"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"dd MMM yy"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"dd MMMM yyyy"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"EEEE"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"EEE"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"HH H hh h"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"mm m ss s"}}</td>
+										<td>{{getExpiryDate(p.expiry) | date:"a Z"}}</td>
+										<td class="text-right">{{p.price | currency }}</td>
+										<td class="text-right">{{p.price | currency:"€" }}</td>
+									</tr>
+								</tbody>
+            </table>
+        </div>
+    </div>
+		<h3>currency, number, and date filters</h3>
+		<textarea name="desc" rows="20" cols="90">
+			yyyy A four-digit representation of the year (e.g., 2050)
+			yy A two-digit representation of the year (e.g., 50)
+			MMMM The full month name (e.g., January)
+			MMM Short representation of the month (e.g., Jan)
+			MM Numeric month, padded to two characters (e.g., 01)
+			M Numeric month, without padding (e.g., 1)
+			dd Day of month, padded to two characters (e.g., 02)
+			d Day of month, no padding (e.g., 2)
+			EEEE Full name of day of week (e.g., Tuesday)
+			EEE Short name of day of week (e.g., Tue)
+			HH Hour in day, 24-hour clock with padding to two characters (e.g., 02)
+			H Hour in day, 24-hour clock without padding (e.g., 2)
+			hh Hour in day, 12-hour clock with padding to two characters (e.g., 02)
+			h Hour in day, 12-hour clock without padding (e.g., 2)
+			mm Minute in hour, padded to two characters (e.g., 02)
+			m Minute in hour without padding (e.g., 2)
+			ss Second in minute, padded to two characters (e.g., 02)
+			s Second in minute without padding (e.g., 2)
+			a Marker for a.m./p.m.
+			Z Four-character representation of time zone
+		</textarea>
+</body>
+</html>
