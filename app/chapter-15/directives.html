@@ -24,6 +24,8 @@
                         var listElem = angular.element('<ul>');
 												/*
 													 -both of these work
+													 - also notice the value has a filter applied to it
+													 - the filter can be applied with the scope.$eval() method
 												*/
                         //var propertyExpression = attrs['listProperty']; 
                         var propertyExpression = attrs.listProperty; 
@@ -34,6 +36,10 @@
                             listElem.append(itemElement);
 
                             var watcherFn = function(watchScope) {
+																/*
+																	 - the $watch is called any time anything is updated here
+																*/
+																in this casee, propertyExpression
                                 console.log('watcherFn called, item.price = ' + item.price);
 
                                 return watchScope.$eval(propertyExpression, item);
