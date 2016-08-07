@@ -14,11 +14,13 @@
 									book says, 
 										" There is no special support for getting the name of the attribute used to
 										apply the directive, which means I use the incantation in Listing 15-4 to get the data from the scope.  "
-									but i have better example in set-next-focus-on: 
+									if you access the way below will only pull in the string value
 										attr.b2bSetNextFocusOn
+									try it here below and set a break point
+                    var data = attrs.unorderedList;
 									*/
                     var data = scope[attrs['unorderedList']];
-                    if(angular.isArray(data)) {
+                     if(angular.isArray(data)) {
                         var listElem = angular.element('<ul>');
                         var propertyExpression = attrs['listProperty'];
 
@@ -81,5 +83,11 @@
             <div unordered-list="products" list-property="price | currency"></div>
         </div>
     </div>
+		<h3>good example between accessing value passed to directive as attribute in html</h3>
+		<textarea name="desc" rows="4" cols="100">
+			var data = attrs.unorderedList; --> will only receive the string value
+							versus
+			var data = scope[attrs['unorderedList']]; --> receives the actual value assigned to var
+		</textarea>
 </body>
 </html>
