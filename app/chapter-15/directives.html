@@ -14,7 +14,7 @@
 									book says, 
 										" There is no special support for getting the name of the attribute used to
 										apply the directive, which means I use the incantation in Listing 15-4 to get the data from the scope.  "
-									if you access the way below will only pull in the string value
+									if you access the way below will only pull in the string value as in BC directive
 										attr.b2bSetNextFocusOn
 									try it here below and set a break point
                     var data = attrs.unorderedList;
@@ -22,7 +22,11 @@
                     var data = scope[attrs['unorderedList']];
                      if(angular.isArray(data)) {
                         var listElem = angular.element('<ul>');
-                        var propertyExpression = attrs['listProperty'];
+												/*
+													 -both of these work
+												*/
+                        //var propertyExpression = attrs['listProperty']; 
+                        var propertyExpression = attrs.listProperty; 
 
                         element.append(listElem);
                         angular.forEach(data, function(item) {
