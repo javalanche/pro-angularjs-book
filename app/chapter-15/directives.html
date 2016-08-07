@@ -10,6 +10,13 @@
         angular.module('exampleApp', [])
             .directive('unorderedList', function() {
                 return function(scope, element, attrs) {
+									/*
+									book says, 
+										" There is no special support for getting the name of the attribute used to
+										apply the directive, which means I use the incantation in Listing 15-4 to get the data from the scope.  "
+									but i have better example in set-next-focus-on: 
+										attr.b2bSetNextFocusOn
+									*/
                     var data = scope[attrs['unorderedList']];
                     if(angular.isArray(data)) {
                         var listElem = angular.element('<ul>');
