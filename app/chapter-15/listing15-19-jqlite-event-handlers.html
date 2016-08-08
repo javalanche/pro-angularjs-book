@@ -83,5 +83,124 @@ represented by the jqLite object.
 			</td>
 		</tr>
 	</table>
+	<h2>
+Other jqLite Methods
+	</h2>
+	<p>
+There are a few other jQuery methods that jqLite provides that don’t fit into the other categories, and I describe them
+in Table 15-7. I have listed these methods for completeness, but I do not demonstrate them because they are not
+widely used in AngularJS directives; see my Pro jQuery 2.0 book for details.
+	</p>
+	<h3><strong>Table 15-7.</strong> Other jqLite Methods</h3>
+	<table border="1">
+		<tr>
+			<th>
+Name 
+			</th>
+			<th>
+Description
+			</th>
+		</tr>
+		<tr>
+			<td>
+data(key, value) 
+data(key) 
+			</td>
+			<td>
+Associates arbitrary data with all the elements or retrieves a value for the specified
+key from the first element represented by the jqLite object
+			</td>
+		</tr>
+		<tr>
+			<td>
+removeData(key) 
+			</td>
+			<td>
+Removes data associated with the specified key from the elements represented by the jqLite object
+			</td>
+		</tr>
+		<tr>
+			<td>
+html() 
+			</td>
+			<td>
+Returns an HTML representation of the content of the first element represented
+by the jqLite object
+			</td>
+		</tr>
+		<tr>
+			<td>
+ready(handler) 
+			</td>
+			<td>
+Registers a handler function that will be invoked once the contents of the DOM are fully loaded
+			</td>
+		</tr>
+	</table>
+
+	<h2>
+Accessing AngularJS Features from jqLite
+	</h2>
+	<p>
+In addition to the jQuery methods that I described in previous sections, jqLite offers some extra methods that provide
+access to features that are specific to AngularJS. Table 15-8 describes these methods.
+	</p>
+	<h3><strong>Table 15-8.</strong> jqLite Methods That Access AngularJS Features</h3>
+	<table border="1">
+		<tr>
+			<th>
+Name 
+			</th>
+			<th>
+Description
+			</th>
+		</tr>
+		<tr>
+			<td>
+controller() 
+controller(name) 
+			</td>
+			<td>
+Returns the controller associated with the current element or its parent. See Chapter 17
+for details of how controllers and directives can interact.
+			</td>
+		</tr>
+		<tr>
+			<td>
+injector() 
+			</td>
+			<td>
+Returns the injector associated with the current element or its parent. I describe
+injectors in Chapter 24.
+			</td>
+		</tr>
+		<tr>
+			<td>
+isolatedScope() 
+			</td>
+			<td>
+Returns an isolated scope if there is one associated with the current element. I describe
+isolated scopes in Chapter 16.
+			</td>
+		</tr>
+		<tr>
+			<td>
+scope() 
+			</td>
+			<td>
+Returns the scope associated with the current element or its parent. See Chapter 16 for
+details of how directives can manage scopes.
+			</td>
+		</tr>
+		<tr>
+			<td>
+inheritedData(key) 
+			</td>
+			<td>
+This method performs the same function as the jQuery data method but will walk up
+the element hierarchy looking for a value to match the specified key.
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
