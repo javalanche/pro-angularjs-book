@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script>
+angular.module("exampleApp", [])
+.directive("demoDirective", function () {
+	return function (scope, element, attrs) {
+		var listElem = element.append("<ol>");
+		for (var i = 0; i < scope.names.length; i++) {
+			listElem.append("<li>").append("<span>").text(scope.names[i]);
+		}
+	}
+})
+.directive("demoDirectiveAngular", function () {
+	return function (scope, element, attrs) {
+		var listElem = angular.element("<ol>");
+		element.append(listElem);
+		for (var i = 0; i < scope.names.length; i++) {
+			listElem.append(angular.element("<li>")
+					.append(angular.element("<span>").text(scope.names[i])));
+		}
+	}
+})
+.controller("defaultCtrl", function ($scope) {
+	$scope.names = ["Apples", "Bananas", "Oranges"];
+})
+		</script>
+		<style type="text/css" media="screen">
+td, th{
+	padding:8px;
+}
+		</style>
+</head>
+<body ng-controller="defaultCtrl">
+	<h3>Fruit: append("<\element>"): '\' is not supposed to be there</h3>
+	<div demo-directive></div>
+	<h3>Fruit: append(angular.element("<\element>")): '\' is not supposed to be there</h3>
+	<div demo-directive-angular></div>
+	<h2>common mistake made in append, always use angular.elments</h2>
+</body>
+</html>
