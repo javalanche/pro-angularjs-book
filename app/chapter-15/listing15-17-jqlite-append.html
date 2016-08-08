@@ -37,10 +37,89 @@ td, th{
 		</style>
 </head>
 <body ng-controller="defaultCtrl">
+	<h1>common mistake made in append, always use angular.elments</h1>
 	<h3>Fruit: append("<\element>"): '\' is not supposed to be there</h3>
 	<div demo-directive></div>
 	<h3>Fruit: append(angular.element("<\element>")): '\' is not supposed to be there</h3>
 	<div demo-directive-angular></div>
-	<h2>common mistake made in append, always use angular.elments</h2>
+	<h3><strong>Table 15-5.</strong>  The jqLite Methods for Creating and Removing Elements </h3>
+	<table border="1">
+		<tr>
+			<th>
+Name 
+			</th>
+			<th>
+Description
+			</th>
+		</tr>
+		<tr>
+			<td>
+angular.element(html) 
+			</td>
+			<td>
+Creates a jqLite object that represents the element specified by the HTML string
+			</td>
+		</tr>
+		<tr>
+			<td>
+after(elements) 
+			</td>
+			<td>
+Inserts the specified content after the element on which the method is called
+			</td>
+		</tr>
+		<tr>
+			<td>
+append(elements) 
+			</td>
+			<td>
+Inserts the specified elements as the last child of each element in the jqLite object
+on which the method has been called
+			</td>
+		</tr>
+		<tr>
+			<td>
+clone() 
+			</td>
+			<td>
+Returns a new jqLite object that duplicates the elements from the object on which
+the method is called
+			</td>
+		</tr>
+		<tr>
+			<td>
+prepend(elements) 
+			</td>
+			<td>
+Inserts the specified elements as the first child of each element in the jqLite object
+on which the method has been called
+			</td>
+		</tr>
+		<tr>
+			<td>
+remove() 
+			</td>
+			<td>
+Removes the elements in the jqLite object from the DOM
+			</td>
+		</tr>
+		<tr>
+			<td>
+replaceWith(elements) 
+			</td>
+			<td>
+Replaces the elements in the jqLite object on which the method is called with the
+specified elements
+			</td>
+		</tr>
+		<tr>
+			<td>
+wrap(elements) 
+			</td>
+			<td>
+Wraps each element in the jqLite object with the specified elements
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
