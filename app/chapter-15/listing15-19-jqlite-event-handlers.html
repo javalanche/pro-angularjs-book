@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <script src="/bower_components/angular/angular.min.js"></script>
+		<style>
+.bold { font-weight: bold; }
+		</style>
+		<script>
+angular.module("exampleApp", [])
+.directive("demoDirective", function () {
+	return function (scope, element, attrs) {
+		var listElem = angular.element("<ol>");
+		element.append(listElem);
+		for (var i = 0; i < scope.names.length; i++) {
+			listElem.append(angular.element("<li>")
+					.append(angular.element("<span>").text(scope.names[i])));
+		}
+		var buttons = element.find("button");
+		buttons.on("click", function (e) {
+			element.find("li").toggleClass("bold");
+		});
+	}
+})
+.controller("defaultCtrl", function ($scope) {
+	$scope.names = ["Apples", "Bananas", "Oranges"];
+})
+		</script>
+
+		<style type="text/css" media="screen">
+td, th{
+	padding:8px;
+}
+		</style>
+</head>
+<body ng-controller="defaultCtrl">
+	<h1>demonstrates the on(event, handler)</h1>
+	<h3>Fruit</h3>
+	<div demo-directive>
+		<button>Click Me</button>
+	</div>
+
+	<h3><strong>Table 15-6.</strong> The jqLite Methods for Handling Events</h3>
+	<table border="1">
+		<tr>
+			<th>
+Name 
+			</th>
+			<th>
+Description
+			</th>
+		</tr>
+		<tr>
+			<td>
+on(events, handler) 
+			</td>
+			<td>
+Registers a handler for one or more events emitted by the elements represented by
+the jqLite object. The jqLite implementation of this method does not support the
+selectors or event data features that jQuery provides.
+			</td>
+		</tr>
+		<tr>
+			<td>
+off(events, handler) 
+			</td>
+			<td>
+Removes a previously registered handler for the specified events from the elements
+represented by the jqLite object. The jqLite implementation of this method does not
+support the selectors feature that jQuery provides.
+			</td>
+		</tr>
+		<tr>
+			<td>
+triggerHandler(event) 
+			</td>
+			<td>
+Triggers all of the handlers for the specified event registered on the elements
+represented by the jqLite object.
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
