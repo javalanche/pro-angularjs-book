@@ -12,16 +12,31 @@
                 return {
                     restrict: 'EACM',
                     replace: true,
-//                    template: '<ul><li ng-repeat="item in data">' +
-//                        '{{item.price | currency}}</li></ul>',
-//                    template: function() {
-//                        return angular.element(document.querySelector('#listTemplate')).html();
-//                    },
+/*
+ *	- simple example using template
+ */
+									//template: '<ul><li ng-repeat="item in data">' +
+									//     '{{item.price | currency}}</li></ul>',
+
+/*
+ *	 - using template in function
+ */
+										//template: function() {
+										//    return angular.element(document.querySelector('#listTemplate')).html();
+										//},
+
+/*
+ *	 - using templateUrl another file
+ */
                     templateUrl: 'tableTemplate.html',
-//                    templateUrl: function (elem, attrs) {
-//                        return attrs["template"] == "table" ?
-//                                "tableTemplate.html" : "itemTemplate.html";
-//                    },
+
+/*
+ *	 - using templateUrl as function
+ */
+										//templateUrl: function (elem, attrs) {
+										//    return attrs["template"] == "table" ?
+										//            "tableTemplate.html" : "itemTemplate.html";
+										//},
                     link: function(scope, element, attrs) {
                         scope.data = scope[attrs['unorderedList']] || scope[attrs['listSource']];
                         scope.tmpl = 'table';
@@ -66,5 +81,10 @@
             </div>
         </div>
     </div>
+		<h3>must read code lots of commented examples</h3>
+		<p>
+The replace property doesn’t just replace the element with the template; it also transfers the attributes from the
+element to the template content.
+		</p>
 </body>
 </html>
