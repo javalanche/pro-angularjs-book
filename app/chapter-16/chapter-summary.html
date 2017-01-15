@@ -237,3 +237,26 @@ if there is no unordered-list attribute value available:
 <li>
 	var data = scope[attrs["unorderedList"] || attrs["listSource"]];
 </li>
+<h2> Listing 16-5. Applying a Directive as a class Attribute Value in the directives.html File </h2>
+<textarea name="desc" rows="8" cols="100">
+...
+<div class="panel-body">
+	<div class="unordered-list: products" list-property="price | currency"></div>
+</div>
+...
+</textarea>
+<p>
+I have cheated slightly in this example and defined a list-property attribute on the element to which the directive
+has been applied. Of course, if I were able to do that in a real project, then I wouldn’t need to apply the directive
+through the class attribute in the first place. In a real project where I need to apply in class, I would have to do something like this:
+</p>
+<textarea name="desc" rows="8" cols="100">
+...
+<div class="panel-body">
+	<div class="unordered-list: products, price | currency"></div>
+</div>
+...
+</textarea>
+<p>
+This would cause AngularJS to provide the directive link function with a value for the unorderedList attribute
+of "products, price | currency", and I would then be responsible for parsing the value in the link function. I</p>
